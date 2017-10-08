@@ -8,6 +8,7 @@ public class PhysicsComponent {
 
     public PhysicsComponent() {
         this.world2d = new World(new Vector2(0, 0), true);
+        this.world2d.setContactListener(new HitListener());
     }
 
     public void update(float delta) {

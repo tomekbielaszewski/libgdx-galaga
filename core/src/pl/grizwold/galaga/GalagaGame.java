@@ -7,8 +7,8 @@ import com.badlogic.gdx.physics.box2d.Box2D;
 import pl.grizwold.galaga.screens.MainMenuScreen;
 
 public class GalagaGame extends Game {
-    public final int WIDTH;
-    public final int HEIGHT;
+    public static int WIDTH;
+    public static int HEIGHT;
 
     public SpriteBatch batch;
     public BitmapFont font;

@@ -5,7 +5,11 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.utils.Array;
+import pl.grizwold.galaga.GalagaGame;
 import pl.grizwold.galaga.components.PhysicsComponent;
+
+import static pl.grizwold.galaga.util.PixelConverter.toMeters;
 
 public class EntityFactory {
     private final PhysicsComponent physicsComponent;
@@ -30,11 +34,12 @@ public class EntityFactory {
 
         Ship ship = new Ship(body, shape);
         ship.setBulletFactory(this::createBullet);
+        body.setUserData(ship);
 
         return ship;
     }
 
-    Bullet createBullet(Vector2 position, Vector2 velocity) {
+    public Bullet createBullet(Vector2 position, Vector2 velocity) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.KinematicBody;
         bodyDef.bullet = true;
@@ -50,6 +55,49 @@ public class EntityFactory {
         Body body = physicsComponent.getWorld().createBody(bodyDef);
         body.createFixture(fixtureDef);
 
-        return new Bullet(body, shape);
+        Bullet bullet = new Bullet(body, shape);
+        body.setUserData(bullet);
+
+        return bullet;
+    }
+
+    public EnemyGroup createEnemyGroup() {
+        float gameWidth = toMeters(GalagaGame.WIDTH);
+        float gameHeight = toMeters(GalagaGame.HEIGHT);
+        float horizontalSpacer = gameWidth / 13;
+        float verticalSpacer = gameHeight / 2 / 6;
+
+        Array<Enemy> enemies = new Array<>(12 * 5);
+        EnemyGroup enemyGroup = new EnemyGroup(enemies);
+
+        for (int i = 1; i < 6; i++) {
+            for (int j = 1; j < 13; j++) {
+                Enemy enemy = createEnemy(new Vector2(horizontalSpacer * j - gameWidth, gameHeight - verticalSpacer * i));
+                enemies.add(enemy);
+            }
+
+        }
+
+        return enemyGroup;
+    }
+
+    public Enemy createEnemy(Vector2 position) {
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyDef.BodyType.DynamicBody;
+        bodyDef.position.set(position);
+
+        PolygonShape shape = new PolygonShape();
+        shape.setAsBox(0.5f, 0.5f);
+
+        FixtureDef fixtureDef = new FixtureDef();
+        fixtureDef.shape = shape;
+
+        Body body = physicsComponent.getWorld().createBody(bodyDef);
+        body.createFixture(fixtureDef);
+
+        Enemy enemy = new Enemy(body, shape);
+        body.setUserData(enemy);
+
+        return enemy;
     }
 }

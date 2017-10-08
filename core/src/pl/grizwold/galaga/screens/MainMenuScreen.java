@@ -26,8 +26,8 @@ public class MainMenuScreen extends ScreenAdapter {
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        game.font.draw(game.batch, "Galaga by Grizwold", game.WIDTH/2 - 50, game.HEIGHT/2 - 40);
-        game.font.draw(game.batch, "Tap anywhere to begin!", game.WIDTH/2 - 60, game.HEIGHT/2);
+        game.font.draw(game.batch, "Galaga by Grizwold", GalagaGame.WIDTH /2 - 50, GalagaGame.HEIGHT /2 - 40);
+        game.font.draw(game.batch, "Tap anywhere to begin!", GalagaGame.WIDTH /2 - 60, GalagaGame.HEIGHT /2);
         game.batch.end();
 
         if (Gdx.input.isTouched() || Gdx.input.isKeyPressed(Input.Keys.ANY_KEY)) {

@@ -16,10 +16,10 @@ public class Ship {
     private static final Vector2 BULLET_SPEED = new Vector2(0, 30f);
 
     private final Shape shape;
-    private Body body;
+    private final Body body;
     private BiFunction<Vector2, Vector2, Bullet> bulletFactory;
 
-    private Array<Bullet> bullets;
+    private final Array<Bullet> bullets;
     private long lastShot;
 
     public Ship(Body body, Shape shape) {

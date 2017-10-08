@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import pl.grizwold.galaga.GalagaGame;
 import pl.grizwold.galaga.components.PhysicsComponent;
+import pl.grizwold.galaga.entities.EnemyGroup;
 import pl.grizwold.galaga.entities.EntityFactory;
 import pl.grizwold.galaga.entities.Ship;
 
@@ -21,18 +22,20 @@ public class GameScreen extends ScreenAdapter {
 
     private final Box2DDebugRenderer renderer;
 
+    private final EnemyGroup enemyGroup;
     private final Ship ship;
 
     public GameScreen(GalagaGame game) {
         this.game = game;
         this.camera = new OrthographicCamera();
-        this.camera.setToOrtho(false, toMeters(game.WIDTH), toMeters(game.HEIGHT));
+        this.camera.setToOrtho(false, toMeters(GalagaGame.WIDTH), toMeters(GalagaGame.HEIGHT));
         this.physics = new PhysicsComponent();
         this.entityFactory = new EntityFactory(physics);
 
         this.renderer = new Box2DDebugRenderer(true, true, true, true, true, true);
 
-        ship = entityFactory.createShip(new Vector2(toMeters(800 / 2f - 32 / 2f), 1));
+        this.ship = entityFactory.createShip(new Vector2(toMeters(800 / 2f - 32 / 2f), 1));
+        this.enemyGroup = entityFactory.createEnemyGroup();
     }
 
     @Override
@@ -56,12 +59,14 @@ public class GameScreen extends ScreenAdapter {
 
     private void logic(float delta) {
         ship.update();
+        enemyGroup.update(delta);
         physics.update(delta);
     }
 
     @Override
     public void dispose() {
         ship.dispose();
+        enemyGroup.dispose();
         physics.dispose();
     }
 }
