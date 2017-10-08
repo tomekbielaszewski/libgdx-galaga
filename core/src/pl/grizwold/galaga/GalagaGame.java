@@ -4,7 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Box2D;
-import pl.grizwold.galaga.screens.GameScreen;
+import pl.grizwold.galaga.screens.MainMenuScreen;
 
 public class GalagaGame extends Game {
     public final int WIDTH;
@@ -24,7 +24,7 @@ public class GalagaGame extends Game {
         font = new BitmapFont();
         Box2D.init();
 
-        this.setScreen(new GameScreen(this));
+        this.setScreen(new MainMenuScreen(this));
     }
 
     @Override

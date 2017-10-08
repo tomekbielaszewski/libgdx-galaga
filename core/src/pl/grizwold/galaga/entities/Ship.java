@@ -6,6 +6,8 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Shape;
 
 public class Ship {
+    private static final float SPEED = 10;
+
     private final Shape shape;
     private Body body;
 
@@ -19,13 +21,14 @@ public class Ship {
     }
 
     public void update() {
+        moveShip();
+    }
+
+    private void moveShip() {
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            body.setLinearVelocity(-10, 0);
+            body.setLinearVelocity(-SPEED, 0);
         } else if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-            body.setLinearVelocity(10, 0);
-        } else if (Gdx.input.isKeyPressed(Input.Keys.X)) {
-            if (!body.getWorld().isLocked())
-                body.getWorld().destroyBody(body);
+            body.setLinearVelocity(SPEED, 0);
         } else {
             body.setLinearVelocity(0, 0);
         }

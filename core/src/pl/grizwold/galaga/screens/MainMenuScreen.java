@@ -1,6 +1,7 @@
 package pl.grizwold.galaga.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -29,7 +30,7 @@ public class MainMenuScreen extends ScreenAdapter {
         game.font.draw(game.batch, "Tap anywhere to begin!", game.WIDTH/2 - 60, game.HEIGHT/2);
         game.batch.end();
 
-        if (Gdx.input.isTouched()) {
+        if (Gdx.input.isTouched() || Gdx.input.isKeyPressed(Input.Keys.ANY_KEY)) {
             game.setScreen(new GameScreen(game));
             dispose();
         }

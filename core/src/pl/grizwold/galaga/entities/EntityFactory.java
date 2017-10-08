@@ -27,6 +27,7 @@ public class EntityFactory {
 
         Body body = physicsComponent.getWorld().createBody(bodyDef);
         body.createFixture(fixtureDef);
+
         return new Ship(body, shape);
     }
 }
