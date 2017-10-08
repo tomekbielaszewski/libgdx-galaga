@@ -1,5 +1,6 @@
 package pl.grizwold.galaga.components;
 
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import pl.grizwold.galaga.entities.Bullet;
@@ -15,8 +16,18 @@ public class HitListener extends ContactAdapter {
         }
 
         if(bulletHitEnemy(contact)) {
-            System.out.println("hit!");
+            Enemy hitEnemy = (Enemy) getBodyOf(Enemy.class, contact).getUserData();
+            hitEnemy.isDestroyed = true;
+
+            Bullet bullet = (Bullet) getBodyOf(Bullet.class, contact).getUserData();
+            bullet.isDestroyed = true;
         }
+    }
+
+    private Body getBodyOf(Class clazz, Contact contact) {
+        if(isInstanceOf(contact.getFixtureA(), clazz)) return contact.getFixtureA().getBody();
+        if(isInstanceOf(contact.getFixtureB(), clazz)) return contact.getFixtureB().getBody();
+        return null;
     }
 
     private boolean enemyTouchesShip(Contact contact) {

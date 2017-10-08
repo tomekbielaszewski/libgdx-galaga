@@ -35,19 +35,21 @@ public class Ship {
     }
 
     public void update() {
+        removeDestroyedBullets();
         moveShip();
         fire();
-        removeOldBullets();
     }
 
-    private void removeOldBullets() {
+    private void removeDestroyedBullets() {
         Iterator<Bullet> iterator = this.bullets.iterator();
         while (iterator.hasNext()) {
-            Bullet next = iterator.next();
-            next.update();
-            if(next.isDestroyed) {
+            Bullet bullet = iterator.next();
+            if(bullet.isDestroyed) {
                 iterator.remove();
+                bullet.dispose();
+                continue;
             }
+            bullet.update();
         }
     }
 

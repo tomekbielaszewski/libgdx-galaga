@@ -20,13 +20,17 @@ public class Bullet {
     }
 
     public void update() {
+        destroyFarBullets();
+    }
+
+    private void destroyFarBullets() {
         if (body.getPosition().y > 20) {
-            body.getWorld().destroyBody(body);
             isDestroyed = true;
         }
     }
 
     public void dispose() {
+        body.getWorld().destroyBody(body);
         shape.dispose();
     }
 }

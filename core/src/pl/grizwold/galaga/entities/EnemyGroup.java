@@ -4,6 +4,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import pl.grizwold.galaga.GalagaGame;
 
+import java.util.Iterator;
+
 import static pl.grizwold.galaga.util.PixelConverter.toMeters;
 
 public class EnemyGroup {
@@ -43,7 +45,14 @@ public class EnemyGroup {
             }
         }
 
-        for (Enemy enemy : this.enemies) {
+        Iterator<Enemy> iterator = this.enemies.iterator();
+        while (iterator.hasNext()) {
+            Enemy enemy = iterator.next();
+            if(enemy.isDestroyed) {
+                enemy.dispose();
+                iterator.remove();
+                continue;
+            }
             if (driftDirectionChanged) {
                 if(enemyGroupFullyAppeared && !startedDescending) {
                     driftDirection.add(0, -0.5f);

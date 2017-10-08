@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.Shape;
 public class Enemy {
     private final Body body;
     private final Shape shape;
+    public boolean isDestroyed;
 
     public Enemy(Body body, Shape shape) {
         this.body = body;
@@ -25,6 +26,7 @@ public class Enemy {
     }
 
     public void dispose() {
+        body.getWorld().destroyBody(body);
         shape.dispose();
     }
 }
