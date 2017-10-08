@@ -1,19 +1,19 @@
-package pl.grizwold.galaga;
+package pl.grizwold.space.invaders;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Box2D;
-import pl.grizwold.galaga.screens.MainMenuScreen;
+import pl.grizwold.space.invaders.screens.MainMenuScreen;
 
-public class GalagaGame extends Game {
+public class SpaceInvadersGame extends Game {
     public static int WIDTH;
     public static int HEIGHT;
 
     public SpriteBatch batch;
     public BitmapFont font;
 
-    public GalagaGame(int width, int height) {
+    public SpaceInvadersGame(int width, int height) {
         this.WIDTH = width;
         this.HEIGHT = height;
     }

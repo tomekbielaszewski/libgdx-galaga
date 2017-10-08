@@ -1,12 +1,11 @@
-package pl.grizwold.galaga.entities;
+package pl.grizwold.space.invaders.entities;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
-import pl.grizwold.galaga.GalagaGame;
+import pl.grizwold.space.invaders.SpaceInvadersGame;
+import pl.grizwold.space.invaders.util.PixelConverter;
 
 import java.util.Iterator;
-
-import static pl.grizwold.galaga.util.PixelConverter.toMeters;
 
 public class EnemyGroup {
     private static final float DRIFT_SPEED = 3f;
@@ -37,7 +36,7 @@ public class EnemyGroup {
                 driftDirectionChanged = true;
                 break;
             }
-            if (enemy.getBody().getPosition().x > toMeters(GalagaGame.WIDTH) - 0.5f) {
+            if (enemy.getBody().getPosition().x > PixelConverter.toMeters(SpaceInvadersGame.WIDTH) - 0.5f) {
                 driftDirection = LEFT;
                 driftDirectionChanged = true;
                 enemyGroupFullyAppeared = true;

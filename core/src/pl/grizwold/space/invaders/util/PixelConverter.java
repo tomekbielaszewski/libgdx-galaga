@@ -1,4 +1,4 @@
-package pl.grizwold.galaga.util;
+package pl.grizwold.space.invaders.util;
 
 public class PixelConverter {
     private static final float multiplier = 32f;

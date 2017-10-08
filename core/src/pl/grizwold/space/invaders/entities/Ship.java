@@ -1,4 +1,4 @@
-package pl.grizwold.galaga.entities;
+package pl.grizwold.space.invaders.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;

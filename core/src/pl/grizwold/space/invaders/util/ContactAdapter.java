@@ -1,4 +1,4 @@
-package pl.grizwold.galaga.util;
+package pl.grizwold.space.invaders.util;
 
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;

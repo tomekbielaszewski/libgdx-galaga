@@ -1,4 +1,4 @@
-package pl.grizwold.galaga.entities;
+package pl.grizwold.space.invaders.entities;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -6,10 +6,9 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Array;
-import pl.grizwold.galaga.GalagaGame;
-import pl.grizwold.galaga.components.PhysicsComponent;
-
-import static pl.grizwold.galaga.util.PixelConverter.toMeters;
+import pl.grizwold.space.invaders.SpaceInvadersGame;
+import pl.grizwold.space.invaders.components.PhysicsComponent;
+import pl.grizwold.space.invaders.util.PixelConverter;
 
 public class EntityFactory {
     private final PhysicsComponent physicsComponent;
@@ -62,8 +61,8 @@ public class EntityFactory {
     }
 
     public EnemyGroup createEnemyGroup() {
-        float gameWidth = toMeters(GalagaGame.WIDTH);
-        float gameHeight = toMeters(GalagaGame.HEIGHT);
+        float gameWidth = PixelConverter.toMeters(SpaceInvadersGame.WIDTH);
+        float gameHeight = PixelConverter.toMeters(SpaceInvadersGame.HEIGHT);
         float horizontalSpacer = gameWidth / 13;
         float verticalSpacer = gameHeight / 2 / 6;
 

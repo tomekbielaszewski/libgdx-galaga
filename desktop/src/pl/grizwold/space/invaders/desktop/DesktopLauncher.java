@@ -1,8 +1,8 @@
-package pl.grizwold.galaga.desktop;
+package pl.grizwold.space.invaders.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import pl.grizwold.galaga.GalagaGame;
+import pl.grizwold.space.invaders.SpaceInvadersGame;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
@@ -11,10 +11,10 @@ public class DesktopLauncher {
 
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
-		config.title = "Galaga by Grizwold";
+		config.title = "Space Invaders by Grizwold";
 		config.width = width;
 		config.height = height;
 
-		new LwjglApplication(new GalagaGame(width, height), config);
+		new LwjglApplication(new SpaceInvadersGame(width, height), config);
 	}
 }

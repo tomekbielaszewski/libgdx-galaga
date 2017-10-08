@@ -1,12 +1,12 @@
-package pl.grizwold.galaga.components;
+package pl.grizwold.space.invaders.components;
 
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.Fixture;
-import pl.grizwold.galaga.entities.Bullet;
-import pl.grizwold.galaga.entities.Enemy;
-import pl.grizwold.galaga.entities.Ship;
-import pl.grizwold.galaga.util.ContactAdapter;
+import pl.grizwold.space.invaders.entities.Enemy;
+import pl.grizwold.space.invaders.util.ContactAdapter;
+import pl.grizwold.space.invaders.entities.Bullet;
+import pl.grizwold.space.invaders.entities.Ship;
 
 public class HitListener extends ContactAdapter {
     @Override

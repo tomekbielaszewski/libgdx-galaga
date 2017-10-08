@@ -1,4 +1,4 @@
-package pl.grizwold.galaga.screens;
+package pl.grizwold.space.invaders.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
@@ -6,16 +6,15 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import pl.grizwold.galaga.GalagaGame;
-import pl.grizwold.galaga.components.PhysicsComponent;
-import pl.grizwold.galaga.entities.EnemyGroup;
-import pl.grizwold.galaga.entities.EntityFactory;
-import pl.grizwold.galaga.entities.Ship;
-
-import static pl.grizwold.galaga.util.PixelConverter.toMeters;
+import pl.grizwold.space.invaders.util.PixelConverter;
+import pl.grizwold.space.invaders.SpaceInvadersGame;
+import pl.grizwold.space.invaders.components.PhysicsComponent;
+import pl.grizwold.space.invaders.entities.EnemyGroup;
+import pl.grizwold.space.invaders.entities.EntityFactory;
+import pl.grizwold.space.invaders.entities.Ship;
 
 public class GameScreen extends ScreenAdapter {
-    private final GalagaGame game;
+    private final SpaceInvadersGame game;
     private final OrthographicCamera camera;
     private final PhysicsComponent physics;
     private final EntityFactory entityFactory;
@@ -25,16 +24,16 @@ public class GameScreen extends ScreenAdapter {
     private final EnemyGroup enemyGroup;
     private final Ship ship;
 
-    public GameScreen(GalagaGame game) {
+    public GameScreen(SpaceInvadersGame game) {
         this.game = game;
         this.camera = new OrthographicCamera();
-        this.camera.setToOrtho(false, toMeters(GalagaGame.WIDTH), toMeters(GalagaGame.HEIGHT));
+        this.camera.setToOrtho(false, PixelConverter.toMeters(SpaceInvadersGame.WIDTH), PixelConverter.toMeters(SpaceInvadersGame.HEIGHT));
         this.physics = new PhysicsComponent();
         this.entityFactory = new EntityFactory(physics);
 
         this.renderer = new Box2DDebugRenderer(true, true, true, true, true, true);
 
-        this.ship = entityFactory.createShip(new Vector2(toMeters(800 / 2f - 32 / 2f), 1));
+        this.ship = entityFactory.createShip(new Vector2(PixelConverter.toMeters(800 / 2f - 32 / 2f), 1));
         this.enemyGroup = entityFactory.createEnemyGroup();
     }
 

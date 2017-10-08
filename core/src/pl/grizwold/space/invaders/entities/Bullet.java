@@ -1,4 +1,4 @@
-package pl.grizwold.galaga.entities;
+package pl.grizwold.space.invaders.entities;
 
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Shape;
