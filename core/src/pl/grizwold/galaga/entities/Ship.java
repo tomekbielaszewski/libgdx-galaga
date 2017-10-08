@@ -29,7 +29,9 @@ public class Ship {
     }
 
     public void render() {
-
+        for (Bullet bullet : this.bullets) {
+            bullet.render();
+        }
     }
 
     public void update() {
