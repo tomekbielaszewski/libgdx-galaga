@@ -28,6 +28,28 @@ public class EntityFactory {
         Body body = physicsComponent.getWorld().createBody(bodyDef);
         body.createFixture(fixtureDef);
 
-        return new Ship(body, shape);
+        Ship ship = new Ship(body, shape);
+        ship.setBulletFactory(this::createBullet);
+
+        return ship;
+    }
+
+    Bullet createBullet(Vector2 position, Vector2 velocity) {
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.type = BodyDef.BodyType.KinematicBody;
+        bodyDef.bullet = true;
+        bodyDef.linearVelocity.set(velocity);
+        bodyDef.position.set(position);
+
+        PolygonShape shape = new PolygonShape();
+        shape.setAsBox(0.1f, 0.2f);
+
+        FixtureDef fixtureDef = new FixtureDef();
+        fixtureDef.shape = shape;
+
+        Body body = physicsComponent.getWorld().createBody(bodyDef);
+        body.createFixture(fixtureDef);
+
+        return new Bullet(body, shape);
     }
 }
