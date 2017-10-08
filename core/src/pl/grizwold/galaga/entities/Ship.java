@@ -14,6 +14,7 @@ import java.util.function.BiFunction;
 public class Ship {
     private static final float SHIP_SPEED = 10;
     private static final Vector2 BULLET_SPEED = new Vector2(0, 30f);
+    private static final int GUN_COOLDOWN = 500;
 
     private final Shape shape;
     private final Body body;
@@ -54,7 +55,7 @@ public class Ship {
     }
 
     private void fire() {
-        if(Gdx.input.isKeyPressed(Input.Keys.F) && TimeUtils.millis() - lastShot > 100) {
+        if(Gdx.input.isKeyPressed(Input.Keys.F) && TimeUtils.millis() - lastShot > GUN_COOLDOWN) {
             bullets.add(bulletFactory.apply(this.body.getPosition(), BULLET_SPEED));
             lastShot = TimeUtils.millis();
         }

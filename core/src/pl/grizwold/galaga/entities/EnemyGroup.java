@@ -9,7 +9,7 @@ import java.util.Iterator;
 import static pl.grizwold.galaga.util.PixelConverter.toMeters;
 
 public class EnemyGroup {
-    private static final float DRIFT_SPEED = 8f;
+    private static final float DRIFT_SPEED = 3f;
     private static final Vector2 LEFT = new Vector2(-DRIFT_SPEED, 0);
     private static final Vector2 RIGHT = new Vector2(DRIFT_SPEED, 0);
     private final Array<Enemy> enemies;
@@ -55,7 +55,7 @@ public class EnemyGroup {
             }
             if (driftDirectionChanged) {
                 if(enemyGroupFullyAppeared && !startedDescending) {
-                    driftDirection.add(0, -0.5f);
+                    driftDirection.add(0, -1f);
                     startedDescending = true;
                 }
                 enemy.getBody().setLinearVelocity(driftDirection);
