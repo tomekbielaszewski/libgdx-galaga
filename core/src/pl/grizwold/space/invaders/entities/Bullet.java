@@ -4,10 +4,9 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Shape;
 
 public class Bullet {
-    private static final float SPEED = 10;
-
+    private final int RANGE = 20;
+    private final Body body;
     private final Shape shape;
-    private Body body;
     public boolean isDestroyed;
 
     public Bullet(Body body, Shape shape) {
@@ -24,7 +23,7 @@ public class Bullet {
     }
 
     private void destroyFarBullets() {
-        if (body.getPosition().y > 20) {
+        if (body.getPosition().y > RANGE) {
             isDestroyed = true;
         }
     }

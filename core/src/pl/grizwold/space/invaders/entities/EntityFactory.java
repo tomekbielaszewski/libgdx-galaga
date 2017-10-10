@@ -50,6 +50,7 @@ public class EntityFactory {
 
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
+        fixtureDef.isSensor = true;
 
         Body body = physicsComponent.getWorld().createBody(bodyDef);
         body.createFixture(fixtureDef);

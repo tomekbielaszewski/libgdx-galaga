@@ -14,8 +14,8 @@ public class SpaceInvadersGame extends Game {
     public BitmapFont font;
 
     public SpaceInvadersGame(int width, int height) {
-        this.WIDTH = width;
-        this.HEIGHT = height;
+        SpaceInvadersGame.WIDTH = width;
+        SpaceInvadersGame.HEIGHT = height;
     }
 
     @Override

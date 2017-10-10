@@ -14,6 +14,7 @@ import pl.grizwold.space.invaders.entities.EntityFactory;
 import pl.grizwold.space.invaders.entities.Ship;
 
 public class GameScreen extends ScreenAdapter {
+    private final float SCREEN_CENTER_X;
     private final SpaceInvadersGame game;
     private final OrthographicCamera camera;
     private final PhysicsComponent physics;
@@ -25,6 +26,8 @@ public class GameScreen extends ScreenAdapter {
     private final Ship ship;
 
     public GameScreen(SpaceInvadersGame game) {
+        this.SCREEN_CENTER_X = SpaceInvadersGame.WIDTH / 2f;
+
         this.game = game;
         this.camera = new OrthographicCamera();
         this.camera.setToOrtho(false, PixelConverter.toMeters(SpaceInvadersGame.WIDTH), PixelConverter.toMeters(SpaceInvadersGame.HEIGHT));
@@ -33,7 +36,8 @@ public class GameScreen extends ScreenAdapter {
 
         this.renderer = new Box2DDebugRenderer(true, true, true, true, true, true);
 
-        this.ship = entityFactory.createShip(new Vector2(PixelConverter.toMeters(800 / 2f - 32 / 2f), 1));
+        float shipCenterX = 32 / 2f;
+        this.ship = entityFactory.createShip(new Vector2(PixelConverter.toMeters(SCREEN_CENTER_X - shipCenterX), 1));
         this.enemyGroup = entityFactory.createEnemyGroup();
     }
 
